@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1035906409019",
+    "firebase_url": "https://myprojectmpip.firebaseio.com",
+    "project_id": "myprojectmpip",
+    "storage_bucket": "myprojectmpip.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035906409019:android:501a256536822886ed321e",
+        "android_client_info": {
+          "package_name": "mk.ukim.finki.mpip.myprojectmpip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035906409019-44j3bfqmaie7u2ubouoagg3lk4ifj98d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaWYWd5vhPnNk6RH8Ar9M_JnrwuEUMa_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035906409019-44j3bfqmaie7u2ubouoagg3lk4ifj98d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
