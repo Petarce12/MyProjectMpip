@@ -1,5 +1,11 @@
 package mk.ukim.finki.mpip.myprojectmpip;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +35,14 @@ public class SucessAct extends AppCompatActivity {
     private void costumStartService() {
         Intent serviceIntent = new Intent(this,CostumService.class);
         startService(serviceIntent);
+
+        final ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        // ne treba da stoe tuj
+        ClipData clip = ClipData.newPlainText("trying stuff out", "Hello, World!");
+        clipboard.setPrimaryClip(clip);
+
+        Log.i("PASTE", "PASTE HAPPENED PASTE HAPPENED PASTE HAPPENED");
+
     }
 
     private void costumStopService()
