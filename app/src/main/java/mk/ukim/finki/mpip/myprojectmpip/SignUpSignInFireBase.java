@@ -4,6 +4,7 @@ import android.accessibilityservice.GestureDescription;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,10 +21,14 @@ import java.util.concurrent.Executor;
 
 public class SignUpSignInFireBase {
 
+    private static final String TAG = "SignUpSignInFireBase";
+    
     private static SignUpSignInFireBase object;
 
     private static FirebaseAuth mAuth;
     private static FirebaseUser currentUser;
+
+    private static FirebaseDatabase database;
 
     public SignUpSignInFireBase()
     {

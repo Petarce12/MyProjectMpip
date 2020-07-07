@@ -28,26 +28,18 @@ public class SucessAct extends AppCompatActivity {
         mFireBase = SignUpSignInFireBase.getInstance();
 
 
-        costumStartService();
+        customStartService();
 
     }
 
-    private void costumStartService() {
-        Intent serviceIntent = new Intent(this,CostumService.class);
+    private void customStartService() {
+        Intent serviceIntent = new Intent(this,CustomService.class);
         startService(serviceIntent);
-
-        final ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        // ne treba da stoe tuj
-        ClipData clip = ClipData.newPlainText("trying stuff out", "Hello, World!");
-        clipboard.setPrimaryClip(clip);
-
-        Log.i("PASTE", "PASTE HAPPENED PASTE HAPPENED PASTE HAPPENED");
-
     }
 
-    private void costumStopService()
+    private void customStopService()
     {
-        Intent serviceIntent = new Intent(this,CostumService.class);
+        Intent serviceIntent = new Intent(this,CustomService.class);
         stopService(serviceIntent);
     }
 
@@ -80,7 +72,7 @@ public class SucessAct extends AppCompatActivity {
         mFireBase.setCurrentUser(mFireBase.getAuth().getCurrentUser());
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
-        costumStopService();
+        customStopService();
         finish();
     }
 

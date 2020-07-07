@@ -19,10 +19,9 @@ import com.google.firebase.database.*;
 
 import static mk.ukim.finki.mpip.myprojectmpip.App.CHANNEL_ID;
 
-public class CostumService extends Service {
+public class CustomService extends Service {
 
     private Notification notification;
-    private ClipData prevClipData;
     private ClipboardManager clipboard;
 
     @Override
@@ -32,8 +31,6 @@ public class CostumService extends Service {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, clickintent, 0);
 
         clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        if (clipboard.hasPrimaryClip())
-            prevClipData = clipboard.getPrimaryClip();
 
         notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("Copy catch service")
@@ -53,15 +50,12 @@ public class CostumService extends Service {
             @Override
             public void onPrimaryClipChanged() {
                 //When copy happens clipdata needs to be put on firebase database
-                Log.i("COPY", "COPY HAPPENED" + clipboard.getPrimaryClip().getItemAt(0).getText().toString());
+                Log.i("COPY", "COPY HAPPENED " + clipboard.getPrimaryClip().getItemAt(0).getText().toString());
+
                 FirebaseDatabase.getInstance().getReference("Users")
                         .child(SignUpSignInFireBase.getInstance().getCurrentUser().getUid())
                         .child("Clipboard").setValue(clipboard.getPrimaryClip().getItemAt(0).getText().toString());
 
-
-
-//               clipboard.getPrimaryClip().getItemAt(0).getText().toString());
-//               Toast.makeText(getApplicationContext(), clipboard.getPrimaryClip().getItemAt(0).getText(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -71,11 +65,13 @@ public class CostumService extends Service {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String clip = snapshot.getValue().toString();
-                        Log.i("CHANGE", "Database clipboard changed to "+clip);
 
-                        clipboard.setPrimaryClip(ClipData.newPlainText("New clip from Firebase", clip));
+                        if (snapshot.getValue() != null) {
+                            String clip = snapshot.getValue().toString();
+                            Log.i("CHANGE", "Database clipboard changed to " + clip);
 
+                            clipboard.setPrimaryClip(ClipData.newPlainText("New clip from Firebase", clip));
+                        }
                     }
 
                     @Override
@@ -83,23 +79,6 @@ public class CostumService extends Service {
 
                     }
                 });
-
-//        Timer timer = new Timer("Copy");
-//        timer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                if (clipboard.hasPrimaryClip()){
-//                    if (!clipboard.getPrimaryClip().equals(prevClipData)){
-//                        Log.i("TIMER", "ClipChanged to:"+clipboard.getPrimaryClip().toString());
-//                        prevClipData = clipboard.getPrimaryClip();
-//                    }
-//                    else {
-//                        Log.i("TIMER","Clip is the same"+prevClipData.toString());
-//                    }
-//                }
-//            }
-//        }, 5000, 5000);
-
 
         startForeground(1, notification);
         return START_STICKY;
