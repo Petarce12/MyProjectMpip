@@ -1,10 +1,8 @@
 package mk.ukim.finki.mpip.myprojectmpip;
 
-import android.accessibilityservice.GestureDescription;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,8 +14,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.concurrent.Executor;
 
 public class SignUpSignInFireBase {
 
@@ -104,7 +100,7 @@ public class SignUpSignInFireBase {
     private void updateUI(Context context)
     {
         if (object.getCurrentUser()!= null) {
-            Intent intent = new Intent(context, SucessAct.class);
+            Intent intent = new Intent(context, SuccessAct.class);
             context.startActivity(intent);
             MainActivity.sActivity.finish();
         }

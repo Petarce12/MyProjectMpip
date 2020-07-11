@@ -1,6 +1,5 @@
 package mk.ukim.finki.mpip.myprojectmpip;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,12 +11,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Pattern;
@@ -81,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (currentUser != null)
         {
-            Intent intent = new Intent(this,SucessAct.class);
+            Intent intent = new Intent(this, SuccessAct.class);
             startActivity(intent);
             finish();
         }

@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class SucessAct extends AppCompatActivity {
+public class SuccessAct extends AppCompatActivity {
 
     private SignUpSignInFireBase mFireBase;
 

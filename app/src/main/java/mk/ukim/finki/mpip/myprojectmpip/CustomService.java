@@ -27,7 +27,7 @@ public class CustomService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Intent clickintent = new Intent(this, SucessAct.class);
+        Intent clickintent = new Intent(this, SuccessAct.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, clickintent, 0);
 
         clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
